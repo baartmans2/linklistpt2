@@ -86,18 +86,18 @@ void ADD(Node* prev, int id, char* name, float gpa)
   Student* newGuy = new Student(name, id, gpa);
   if(prev == NULL)
   {
-    startnode = new Node(newGuy);//make a new node for the head
-    startnode->setStudent(newGuy);//set the student for the node equal to the
+    startnode = new Node(newGuy);
+    startnode->setStudent(newGuy);
   }
 
   else if (prev < getStudent()->getID())
   {
     while(prev->getNext() != NULL)
     {
-      prev = prev->getNext();//make the current node equal to the next node
+      prev = prev->getNext();
     }
-    prev->setNext(new Node(newGuy));//make a new node at the set next location of the current node
-    prev->getNext()->setStudent(newGuy);//set the nodes student to the input of function
+    prev->setNext(new Node(newGuy));
+    prev->getNext()->setStudent(newGuy);
   }  
   else
   {
