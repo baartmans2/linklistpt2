@@ -86,22 +86,22 @@ void ADD(Node* prev, int id, char* name, float gpa)
   Student* newGuy = new Student(name, id, gpa);
   if(prev == NULL)
   {
-    startnode = new Node(newGuy);
-    startnode->setStudent(newGuy);
+    startnode = new Node();//make a new node for the head
+    startnode->setStudent(newGuy);//set the student for the node equal to the
   }
 
-  else if (prev < getStudent()->getID())
+  else if (prev-> getStudent()->getID() != NULL)
   {
     while(prev->getNext() != NULL)
     {
-      prev = prev->getNext();
+      prev = prev->getNext();//make the current node equal to the next node
     }
-    prev->setNext(new Node(newGuy));
-    prev->getNext()->setStudent(newGuy);
+    prev->setNext(new Node());//make a new node at the set next location of the current node
+    prev->getNext()->setStudent(newGuy);//set the nodes student to the input of function
   }  
   else
   {
-    ADD(prev->getNext(), id, name, gpa);
+    ADD(prev->getNext(), id, name, gpa);//recursion
   }
 }
 
@@ -117,7 +117,37 @@ void PRINT(Node* next)
 
 void DELETE(Node* prev, Node* next, int id)
 {
-
+  if (prev == startnode && (prev -> getStudent() -> getID() == id))//if the student picked is the startnode
+    {
+      if (prev -> getNext() == NULL)
+      {
+	prev -> ~Node();
+	startnode = NULL;
+      }
+      else
+      {
+	startnode = prev -> getNext();
+	prev -> ~Node();
+	DELETE(startnode, NULL, id);
+      }
+    }
+  else if (prev -> getNext() -> getStudent() -> getID() == id)
+    {
+      next = prev;
+      prev-> setNext(prev->getNext()->getNext());
+      next = next->getNext();
+      next->~Node();
+	  
+    }
+  else if (prev -> getNext() -> getStudent() == NULL)
+    {
+      cout << "Student not found." << endl;
+    }
+  else
+    {
+      prev = prev->getNext();
+      DELETE(prev, next, id);
+    }
 }
 
 float AVERAGE(Node* next)
