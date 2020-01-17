@@ -48,16 +48,17 @@ int main()
 	}
       else if (strcmp(input, "DELETE") == 0)
 	{
-	  if (startnode == NULL)//if no students in list
-	  {
-	    cout << "List is Empty." << endl;
-	  }
-	  else
-	  {
-	    cout << "Enter ID of student to delete." << endl;
-	    cin >> id; cin.clear(); cin.ignore(555555, '\n');
-	    DELETE(startnode, NULL, id);//deletes student
-	  }
+	 // if (startnode == NULL)//if no students in list
+	  //{
+	   // cout << "List is Empty." << endl;
+	  //}
+	  //else
+	  //{
+	   // cout << "Enter ID of student to delete." << endl;
+	    //cin >> id; cin.clear(); cin.ignore(555555, '\n');
+	    //DELETE(startnode, NULL, id);//deletes student
+	  //}
+	      cout << "Delete doesn't work Right now. Sorry. :(" << endl;
 	}
       else if (strcmp(input, "AVERAGE") == 0)
 	{
